@@ -1,0 +1,91 @@
+/** ************************************** **/
+/** ************* WHOLE PAGE ************* **/
+/** ************************************** **/
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+form .btn,
+form {
+    color: #1d1d1d;
+}
+
+/** ************************************** **/
+/** *************** NAVBAR *************** **/
+/** ************************************** **/
+.navbar, ul .dropdown-menu {
+    background-color: #1d1d1d;
+}
+
+.navbar-collapse {
+    flex-grow: 0 !important;
+}
+
+li .dropdown-item {
+    color: #F7F7F7;
+}
+
+li .dropdown-item:hover {
+    background-color: #8A2BE2;
+    color: #F7F7F7;
+}
+
+form .btn {
+    background-color: #8A2BE2;
+    border-color: #8A2BE2;
+}
+
+#cartBtn {
+    background-color: #FF5700;
+    border-color: #FF5700;
+}
+
+form .btn:hover,
+#cartBtn:hover {
+    color: #F7F7F7;
+}
+
+
+/** ************************************** **/
+/** *************** TITLES *************** **/
+/** ************************************** **/
+h1, h2, h3, #logo {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+
+/** ************************************** **/
+/** **************** MAIN **************** **/
+/** ************************************** **/
+main {
+    background-color: #F7F7F7;
+}
+
+#sliderCtn {
+    height: 100%;
+    width: auto;
+}
+
+img {
+    object-fit: cover;
+}
+
+.card {
+    max-height: 190px;
+    max-width: 190px;
+    border-color: #8A2BE2 !important;
+}
+
+.card-img {
+    background-color: #8A2BE2;
+}
+
+/*
+Principale :    orange vif 		#FF9900 ou #FF5700
+Secondaire:     bleu électrique #00FFFF ou #0F7FFF
+Accentuation:   violet puissant #8A2BE2
+Accentuation:   jaune vif		#FFC300
+Fond:           gris 			#F7F7F7
+supplémentaire: noir profond	#1D1D1D
+*/
