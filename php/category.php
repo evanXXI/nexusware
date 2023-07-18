@@ -1,9 +1,9 @@
 <?php
 //? //? Intégration du contenu de mon fichier de connexion à la BDD dans le fichier actuel
-require_once("../utils/db-connect.php");
+require_once("./utils/db-connect.php");
 
 //? Intégration du fichier qui contient mes fonctions
-require("../utils/function.php");
+require("./utils/function.php");
 
 //? Si ma méthode de requète est POST, alors j'affecte à ma variable $method le contenu de la superglobale $_POST, sinon je lui affecte celui de $_GET
 if ($_SERVER["REQUEST_METHOD"] == "POST") $method = $_POST;
@@ -16,7 +16,7 @@ switch ($method["choice"]) {
         if ($req) $categories = $req->fetchAll(PDO::FETCH_ASSOC);
         else $categories = [];
         
-        echo json_encode(["success" => true, "catégories" => $categories]);
+        echo json_encode(["success" => true, "categories" => $categories]);
         break;
     
     case "select_id":

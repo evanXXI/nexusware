@@ -20,7 +20,7 @@ switch ($method["choice"]) {
         if ($req) $categories = $req->fetchAll(PDO::FETCH_ASSOC);
         else $categories = [];
         
-        echo json_encode(["success" => true, "catégories" => $categories]);
+        echo json_encode(["success" => true, "categories" => $categories]);
         break;
     
     case "select_id":
