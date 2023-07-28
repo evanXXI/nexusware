@@ -4,7 +4,7 @@ CREATE TABLE users (
     lastname VARCHAR(60) NOT NULL,
     birthdate DATE NOT NULL, 
     admin TINYINT(1) NOT NULL DEFAULT 0,
-    street_number VARCHAR(5) NOT NULL,
+    street_number VARCHAR(11) NOT NULL,
     street_name VARCHAR(60) NOT NULL,
     zip_code VARCHAR(60) NOT NULL,
     country VARCHAR(60) NOT NULL,
@@ -19,10 +19,12 @@ CREATE TABLE messages (
     object VARCHAR(255) NOT NULL,
     content VARCHAR(765) NOT NULL,
     sending_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    recipient_id INT(11) DEFAULT NULL,
     user_id INT(11) NOT NULL,
 
     PRIMARY KEY (id),
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (recipient_id) REFERENCES users(id)
 );
 
 CREATE TABLE wishlists (
@@ -41,16 +43,16 @@ CREATE TABLE categories (
     
     PRIMARY KEY (id)
 );
-
+ 
 CREATE TABLE products (
     id INT(11) NOT NULL AUTO_INCREMENT,
     name VARCHAR(60) NOT NULL,
     description MEDIUMTEXT NOT NULL,
-    price FLOAT(5,2) NOT NULL,
+    price DECIMAL(5, 2) NOT NULL,
     stock INT(5) NOT NULL,
-    sold_units INT(5) NOT NULL,
+    sold_units INT(5) NOT NULL DEFAULT 0,
     adding_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    wireless VARCHAR(6) NOT NULL,
+    wireless TINYINT(1) NOT NULL,
     image VARCHAR(255),
     category_id INT(11) NOT NULL,
 
