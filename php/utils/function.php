@@ -30,7 +30,6 @@ function upload($file) {
 
         if (in_array($extension, $validExtensions)) {
             if (move_uploaded_file($file["image"]["tmp_name"], $location)) {
-                echo "ok!";
                 return $filename;
             }
             else return false;
