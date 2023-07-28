@@ -8,7 +8,7 @@ require_once("./utils/db-connect.php");
 //? Si les paramètres récupérés en entrée utilisateur ne sont pas "email" et "pwd", alors j'envoie un message d'erreur
 if(!isset($_POST["email"], $_POST["pwd"])) {
     echo json_encode(["success" => false, "error" => "Données manquantes"]);
-    die; //! Arrêt de l'éxcécution du script
+    die; //! Arrêt de l'exécution du script
 }
 
 //? Si les paramètres "email" et "pwd" récupéres en entrée sont vides, alors j'envoie un message d'erreur

@@ -5,7 +5,7 @@ require_once("../utils/db-connect.php");
 //? Intégration du fichier qui contient mes fonctions
 require("../utils/function.php");
 
-//? Le reste du script ne va s'exécuter qui si et seulement si l'utilisateur est connécté et qu'il est administrateur
+//? Le reste du script ne va s'exécuter qui si et seulement si l'utilisateur est connecté et qu'il est administrateur
 isConnected();
 isAdmin();
 
@@ -117,7 +117,7 @@ switch ($method["choice"]) {
         $req->execute([$method["id"]]);
 
         if ($req->rowCount()) echo json_encode(["success" => true]);
-        else json_encode(["success" => false, "error" => "Erreur mlors de la suppression"]);
+        else json_encode(["success" => false, "error" => "Erreur lors de la suppression"]);
         break;
     
     default:

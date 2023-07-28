@@ -51,7 +51,6 @@ $req->bindValue(":zip_code", $_POST["zip_code"]);
 $req->bindValue(":country", $_POST["country"]);
 $req->bindValue(":email", $_POST["email"]);
 $req->bindValue(":pwd", $hash);
-
 $req->execute();
 
 echo json_encode(["success" => true]);
