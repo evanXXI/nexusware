@@ -59,25 +59,32 @@ h1, h2, h3, #logo {
 /** **************** MAIN **************** **/
 /** ************************************** **/
 main {
+    background-color: white;
+}
+
+.row {
     background-color: #F7F7F7;
 }
 
-#sliderCtn {
-    height: 100%;
-    width: auto;
-}
-
-img {
+#sliderCtn img {
+    min-height: 250px !important;
+    max-height: 500px !important;
     object-fit: cover;
 }
 
 .card {
-    max-height: 190px;
-    max-width: 190px;
+    /*  min-height: 75px;
+    min-width: 75px;
+    max-height: 155px;
+    max-width: 155px; */
     border-color: #8A2BE2 !important;
 }
 
 .card-img {
+    /*   min-height: 75px;
+    min-width: 75px;
+    max-height: 155px;
+    max-width: 155px; */
     background-color: #8A2BE2;
 }
 
