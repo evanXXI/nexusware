@@ -63,7 +63,7 @@ CREATE TABLE products (
 CREATE TABLE orders (
     order_id INT(11) NOT NULL AUTO_INCREMENT,
     order_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    total_price DECIMAL(4,2) NOT NULL,
+    total_price DECIMAL(4,2) NOT NULL DEFAULT 0,
     order_status TINYTEXT,
     user_id INT(11) NOT NULL,
 
@@ -82,7 +82,7 @@ CREATE TABLE contains (
 CREATE TABLE isPartOf(
     order_id INT(11) NOT NULL,
     product_id INT(11) NOT NULL,
-    qte_produit INT(3) NOT NULL,
+    product_qty INT(3) NOT NULL,
 
     FOREIGN KEY (order_id) REFERENCES orders(order_id),
     FOREIGN KEY (product_id) REFERENCES products(id)
