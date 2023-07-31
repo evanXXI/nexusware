@@ -11,10 +11,13 @@ form {
     color: #1d1d1d;
 }
 
+
 /** ************************************** **/
-/** *************** NAVBAR *************** **/
+/** ********** NAVBAR AND FOOTER ********* **/
 /** ************************************** **/
-.navbar, ul .dropdown-menu {
+.navbar, ul .dropdown-menu, 
+footer, footer div .row,
+ul .list-group-item {
     background-color: #1d1d1d;
 }
 
@@ -29,6 +32,7 @@ li .dropdown-item {
 li .dropdown-item:hover {
     background-color: #8A2BE2;
     color: #F7F7F7;
+    transition: 0.5s ease;
 }
 
 form .btn {
@@ -36,17 +40,34 @@ form .btn {
     border-color: #8A2BE2;
 }
 
-#cartBtn {
+#cartBtnBasic, #cartBtnBurger {
     background-color: #FF5700;
     border-color: #FF5700;
 }
 
 form .btn:hover,
-#cartBtn:hover {
+#cartBtnBasic:hover, #cartBtnBurger:hover {
+    color: #F7F7F7;
+    transition: 0.5s ease;
+}
+
+.link {
+    text-decoration: none;
     color: #F7F7F7;
 }
 
+.link:hover {
+    color: #8A2BE2;
+    transition: 0.5s ease;
+}
 
+#copyrightBar {
+    font-size: 0.6em;
+}
+
+.list-group-item {
+    font-size: 0.8em;
+}
 /** ************************************** **/
 /** *************** TITLES *************** **/
 /** ************************************** **/
@@ -66,26 +87,23 @@ main {
     background-color: #F7F7F7;
 }
 
-#sliderCtn img {
-    min-height: 250px !important;
-    max-height: 500px !important;
-    object-fit: cover;
-}
-
-.card {
-    /*  min-height: 75px;
-    min-width: 75px;
-    max-height: 155px;
-    max-width: 155px; */
+.card, .card-img {
     border-color: #8A2BE2 !important;
+    background-color: #8A2BE2;
 }
 
-.card-img {
-    /*   min-height: 75px;
-    min-width: 75px;
-    max-height: 155px;
-    max-width: 155px; */
-    background-color: #8A2BE2;
+.card:hover {
+    border-color: #FF5700 !important;
+    transition: 0.5s ease;
+
+    .card-img {
+        background-color: #FF5700;
+        transition: 0.5s ease;
+    }
+}
+
+.card-title  {
+    text-decoration: none;
 }
 
 /*
