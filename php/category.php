@@ -9,7 +9,7 @@ require("./utils/function.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") $method = $_POST;
 else $method = $_GET;
 
-switch ($method["choice"]) {
+switch ($method["choice"]) { 
     case "select":
         $req = $db->query("SELECT * FROM categories");
 

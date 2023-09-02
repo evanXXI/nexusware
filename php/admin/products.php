@@ -15,7 +15,7 @@ else $method = $_GET;
 
 switch ($method["choice"]) {
     case "select":
-        $req = $db->query("SELECT * FROM products");
+        $req = $db->query("SELECT p.*, c.name as category_name FROM products p INNER JOIN categories c ON p.category_id = c.id");
 
         if ($req) $products = $req->fetchAll(PDO::FETCH_ASSOC);
         else $products = [];

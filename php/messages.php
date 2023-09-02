@@ -91,7 +91,7 @@ switch ($method["choice"]) {
 
         $message_id = $db->lastInsertId();
 
-        if ($req->rowCount()) echo json_encode(["success" => true, "message_id" => $message_id]);
+        echo json_encode(["success" => true, "message_id" => $message_id]);
         break;
 
     case "delete":

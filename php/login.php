@@ -37,6 +37,6 @@ if ($user && password_verify($_POST["pwd"], $user["pwd"])) {
     $_SESSION = [];
     session_destroy();
 
-    echo json_encode(["success" => false, "error" => "Aucun utilisateur"]);
+    echo json_encode(["success" => false, "error" => "Email ou mot de passe incorrect(s)"]);
 }
 ?>
