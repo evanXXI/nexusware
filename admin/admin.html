@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NexusWare">
+
+  <link rel="stylesheet" href="../utils/styles.css">
+  
+  <!-- ** BOOTSTRAP 5 CSS ** -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" >
+
+  <!-- ** FONTS ** -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- ** JQuery CDN ** -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>NexusWare - Home</title>     
+</head>
+
+<body>
+  <header>
+    <!-- NavBar-->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <button class="navbar-toggler justify-content-md-end" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbarContent" aria-controls="myNavbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="../homepage/index.html">
+            <div id="logo">NexusWare</div>
+          </a>
+
+          <button class="btn d-block d-lg-none" id="cartBtnBurger">
+            <i class="bi bi-cart"></i>
+          </button>
+
+          <div class="justify-content-end collapse navbar-collapse" id="myNavbarContent">
+            <form class="d-flex pe-lg-5">
+              <input class="form-control me-2" type="search" placeholder="Rechercher..." aria-label="Search"/>
+              <button class="btn" id="searchBtn" type="submit">
+                <i class="bi bi-search"></i>
+              </button>
+            </form>
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navOptionList">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="../homepage/index.html">Accueil</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Produits
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a class="dropdown-item" href="../products/products.html?category_id=1"><i class="bi bi-headset"></i> Casques</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="../products/products.html?category_id=2"><i class="bi bi-mouse"></i> Souris</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="../products/products.html?category_id=3"><i class="bi bi-keyboard"></i> Claviers</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="../contact/contact.html">Contact</a>
+              </li>
+
+              <li class="nav-item" id="registerOption">
+                <a class="nav-link" href="../register/register.html">Inscription</a>
+              </li>
+
+              <li class="nav-item" id="loginOption">
+                <a class="nav-link" href="../login/login.html">Connexion</a>
+              </li>
+            </ul>
+          </div>
+
+          <button class="btn d-none d-lg-block" id="cartBtnBasic">
+            <i class="bi bi-cart"></i>
+          </button>
+        </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container-xxl pt-5 pb-5">
+      <div class="row rounded-3 m-1 box">
+        <div class="col-9 col-md-3 pb-3">
+          <h1 class="fs-3 pt-2">Administrateur</h1>
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-action d-flex flex-row">
+            <p class="p-0 m-0 me-1"><a class="link stretched-link text-dark" href="admin.html?orders">Historique des commandes</a></p>
+            </li>
+            <li class="list-group-item list-group-item-action d-flex flex-row">
+            <p class="p-0 m-0 me-1"><a class="link stretched-link text-dark" href="admin.html?product_management">Gestion des produits</a></p>
+            </li>
+            <li class="list-group-item list-group-item-action d-flex flex-row">
+            <p class="p-0 m-0 me-1"><a class="link stretched-link text-dark" href="admin.html?category_management">Gestion des catégories</a></p>
+            </li>
+            <li class="list-group-item list-group-item-action d-flex flex-row">
+              <p class="p-0 m-0 me-1"><a class="link stretched-link text-dark" href="admin.html?messaging_management">Gestion des messages</a></p>
+              </li>
+            <li class="list-group-item list-group-item-action d-flex flex-row">
+            <p class="p-0 m-0 me-1"><a class="link stretched-link text-dark" href="admin.html?users_management">Gestion des utilisateurs</a></p>
+            </li>
+            <li class="list-group-item list-group-item-action d-flex flex-row">
+            <p class="p-0 m-0 me-1"><a class="link stretched-link text-dark" href="admin.html?stats">Statistiques des ventes</a></p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-lg-9 mt-3 mt-lg-0 flex">
+          <h2 class="fs-3 pt-2">Gestion des commandes</h2>
+          <div id ="ordersCtn">
+            <table class="table table-hover col-12">
+              <thead>
+                <th scope="col">N° de commande</th>
+                <th scope="col">Date et heure</th>
+                <th scope="col" class="d-none d-lg-table-cell">Prix</th>
+                <th scope="col">Statut</th>
+                <th scope="col" class="d-none d-lg-table-cell">Utilisateurs</th>
+                <th scope="col" class="d-none d-lg-table-cell">Adresse</th>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          
+          <div class="d-none" id ="productsCtn">
+            <table class="table table-hover col-12">
+              <thead>
+                <th scope="col">Nom de produit</th>
+                <th scope="col" class="d-none d-lg-table-cell">Description</th>
+                <th scope="col">Prix</th>
+                <th scope="col" class="d-none d-lg-table-cell">Stock</th>
+                <th scope="col" class="d-none d-lg-table-cell">Unités vendues</th>
+                <th scope="col" class="d-none d-lg-table-cell">Date d'ajout</th>
+                <th scope="col" class="d-none d-lg-table-cell">Sans-fil</th>
+                <th scope="col" class="d-none d-lg-table-cell">Image</th>
+                <th scope="col">Catégorie</th>
+              </thead>
+
+              <tbody></tbody>
+            </table>
+          </div>
+          
+          <div class="d-none" id ="categoriesCtn">
+            <table class="table table-hover col-12">
+              <thead>
+                <th scope="col" class="d-none d-lg-table-cell">Identifiant</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Image</th>
+              </thead>
+
+              <tbody></tbody>
+            </table>
+
+            <h3 class="fs-3 pt-2">Ajout d'une catégorie</h2>
+            <form class="row">
+              <div class="d-none col-12 col-md-6 form-floating mt-0 mt-md-4 pb-3">
+                <input type="text" id="catId" class="form-control"> 
+                <label for="catId" class="form-label">Id de la catégorie</label>
+              </div>
+              <div class="col-12 col-md-6 form-floating mt-0 mt-md-4 pb-3">
+                <input type="text" id="catName" class="form-control"> 
+                <label for="catName" class="form-label">Nom de la catégorie</label>
+              </div>
+
+              <div class="col-12 col-md-6 pb-3">
+                <label for="catImage" class="form-label">Image (formats: .jpg, .jpeg, .png, .gif, .svg)</label>
+                <input class="form-control" type="file" id="catImage" accept=".jpg, .jpeg, .png, .gif, .svg">
+              </div>
+  
+              <div class="form-floating">
+                <button type="submit" class="btn" id="addCategory">Ajouter</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="d-none" id ="usersCtn">
+            <table class="table table-hover col-12">
+              <thead>
+                <th scope="col" class="d-none d-lg-table-cell">Identifiant</th>
+                <th scope="col">Nom complet</th>
+                <th scope="col" class="d-none d-lg-table-cell">Administrateur</th>
+                <th scope="col">E-mail</th>
+              </thead>
+
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="d-none" id ="messagingCtn">
+            <table class="table table-hover col-12">
+              <thead>
+                <th scope="col">Messages</th>
+                <th scope="col">Messages</th>
+                <th scope="col">Messages</th>
+                <th scope="col">Messages</th>
+              </thead>
+
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <canvas class="d-none" aria-label="chart" role="img"></canvas>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer mt-auto py-3">
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"
+  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.3/dist/chart.umd.min.js"></script>
+  <script src="admin.js"></script>
+  <script src="../utils/utils.js"></script>
+  
+</body>
+</html>
