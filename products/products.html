@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NexusWare">
+
+  <link rel="stylesheet" href="../utils/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script>
+    /* $(() => {
+      $("header").load("../utils/header.html");
+    });*/
+
+    $(() => {
+      $("footer").load("../utils/footer.html");
+    });
+  </script>
+  <title>NexusWare - Produits</title>
+</head>
+
+<body>
+  <header>
+    <!-- NavBar-->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <button class="navbar-toggler justify-content-md-end" type="button" data-bs-toggle="collapse"
+          data-bs-target="#myNavbarContent" aria-controls="myNavbarContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand" href="/nexusWareProject/nexusware/homepage/index.html">
+          <div id="logo">NexusWare</div>
+        </a>
+
+        <button class="btn d-block d-lg-none"id="cartBtnBurger"><i class="bi bi-cart"></i></button>
+
+        <div class="justify-content-end collapse navbar-collapse " id="myNavbarContent">
+          <form class="d-flex pe-lg-5">
+            <input class="form-control me-2" type="search" placeholder="Rechercher..." aria-label="Search">
+            <button class="btn" id="searchBtn" type="submit"><i class="bi bi-search"></i></button>
+          </form>
+
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navOptionList">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/nexusWareProject/nexusware/homepage/index.html">Accueil</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Produits
+              </a>
+
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" href="/nexusWareProject/nexusware/products/products.html?category_id=1"><i class="bi bi-headset"></i> Casques</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/nexusWareProject/nexusware/products/products.html?category_id=2"><i class="bi bi-mouse"></i> Souris</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/nexusWareProject/nexusware/products/products.html?category_id=3"><i class="bi bi-keyboard"></i> Claviers</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/nexusWareProject/nexusware/contact/contact.html">Contact</a>
+            </li>
+
+            <li class="nav-item" id="registerOption">
+              <a class="nav-link" href="/nexusWareProject/nexusware/register/register.html">Inscription</a>
+            </li>
+
+            <li class="nav-item" id="loginOption">
+              <a class="nav-link" href="/nexusWareProject/nexusware/login/login.html">Connexion</a>
+            </li>
+          </ul>
+        </div>
+
+        <button class="btn d-none d-lg-block" id="cartBtnBasic"><i class="bi bi-cart"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container-xxl pt-5 pb-5">
+      <div class="row rounded-3 m-1 box">
+        <h1 class="fs-3 pt-2">Liste des produits</h1>
+        <div class="col-12 col-md-3">
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-action d-flex flex-row">
+              <p class="p-0 m-0 me-1"><a class="link stretched-link text-dark" href="products.html?category_id=1">Casques</a></p>
+            </li>
+            <li class="list-group-item list-group-item-action d-flex flex-row">
+              <p class="p-0 m-0 me-1"><a class="link stretched-link text-dark" href="products.html?category_id=2">Souris</a></p>
+            </li>
+            <li class="list-group-item list-group-item-action d-flex flex-row">
+              <p class="p-0 m-0 me-1"><a class="link stretched-link text-dark" href="products.html?category_id=3">Claviers</a></p>
+            </li>
+            <li class="list-group-item list-group-item-action d-flex flex-row">
+              <p class="p-0 m-0 me-1"><a class="link stretched-link text-dark" href="products.html">Afficher tous les produits</a></p>
+            </li>
+            <!-- <li class="list-group-item list-group-item-action d-flex flex-row">
+              <p class="p-0 m-0 me-1">Trier par :</p>
+              <select class="custom-select" id="sort">
+                <option selected>Choisir...</option>
+                <option value="byNewness">Nouveauté</option>
+                <option value="byPriceAsc">Prix croissant</option>
+                <option value="byPriceDesc">Prix décroissant</option>
+              </select>
+            </li>
+            <li class="list-group-item list-group-item-action d-flex flex-row">
+              <p class="p-0 m-0 me-1">Filtrer par :</p>
+              <select class="custom-select" id="filter">
+                <option selected>Choisir...</option>
+                <option value="Filaire">Filaire</option>
+                <option value="Sans-fil">Sans-fil <a href=""></a></option>
+              </select>
+            </li> -->
+          </ul>
+        </div>
+
+        <div class="col-9 mt-3 mt-lg-0">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3 pb-3" id="productRow">          
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer mt-auto py-3"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="products.js"></script>
+  <script src="../utils/utils.js"></script>
+</body>
+
+</html>
