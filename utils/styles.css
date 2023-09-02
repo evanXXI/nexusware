@@ -44,6 +44,7 @@ form #searchBtn {
 #cartBtnBasic, #cartBtnBurger {
     background-color: #FF5700;
     border-color: #FF5700;
+    color: #1d1d1d;
 }
 
 form #searchBtn:hover,
