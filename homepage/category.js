@@ -1,11 +1,3 @@
-$("header nav div #cartBtnBurger").hide();
-
-$("header nav div .navbar-toggler").click(() => {
-    $("header nav div #cartBtnBasic").hide();
-    $("header nav div #cartBtnBurger").show();
-});
-
-
 $.ajax({
     url: "../php/category.php",
     type: "GET",
@@ -15,8 +7,6 @@ $.ajax({
     },
     success: (res) => {
         if (res.success) {
-            console.log(res.categories);
-
             res.categories.forEach(cat => {
                 const cardCtn = $("<div></div>").addClass("card-group");
                 
@@ -28,8 +18,8 @@ $.ajax({
 
                 const cardTitle = $("<h2></h2>").addClass("card-title fs-6 w-100").text(cat.name);
 
-                const cardLink = $("<a></a>").addClass("stretched-link");
-                cardLink.attr("href", "homepage");
+                const cardLink = $("<a></a>").addClass("card-link stretched-link");
+                cardLink.attr("href", "/nexusWareProject/nexusware/products/products.html?category_id=" + cat.id);
                 const cardOverlay = $("<div></div>").addClass("card-img-overlay");
                 
                 cardOverlay.append(cardTitle);
@@ -37,6 +27,6 @@ $.ajax({
                 cardCtn.append(card);
                 $("#categoryCtn").append(cardCtn);
             });
-        }
+        }else alert(res.error);
     }
 });
