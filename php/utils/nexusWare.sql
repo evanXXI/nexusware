@@ -4,9 +4,10 @@ CREATE TABLE users (
     lastname VARCHAR(60) NOT NULL,
     birthdate DATE NOT NULL, 
     admin TINYINT(1) NOT NULL DEFAULT 0,
-    street_number VARCHAR(11) NOT NULL,
-    street_name VARCHAR(60) NOT NULL,
-    zip_code VARCHAR(60) NOT NULL,
+    street_number INT(5) NOT NULL,
+    street_bis VARCHAR(6),
+    street_name VARCHAR(255) NOT NULL,
+    zip_code VARCHAR(5) NOT NULL,
     country VARCHAR(60) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     pwd VARCHAR(60) NOT NULL,
@@ -43,7 +44,7 @@ CREATE TABLE categories (
     
     PRIMARY KEY (id)
 );
- 
+
 CREATE TABLE products (
     id INT(11) NOT NULL AUTO_INCREMENT,
     name VARCHAR(60) NOT NULL,
@@ -63,7 +64,7 @@ CREATE TABLE products (
 CREATE TABLE orders (
     order_id INT(11) NOT NULL AUTO_INCREMENT,
     order_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    total_price DECIMAL(4,2) NOT NULL DEFAULT 0,
+    total_price DECIMAL(10,2) NOT NULL DEFAULT 0,
     order_status TINYTEXT,
     user_id INT(11) NOT NULL,
 
