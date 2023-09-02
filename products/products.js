@@ -22,20 +22,45 @@ if (byNewness) {
     displayChoice = "selectByNewness";
 }
 
+$.ajax({
+    url: "../php/category.php",
+    type: "GET",
+    dataType: "json",
+    data: {
+        choice: "select"
+    },
+    success: (res) => {
+        if (res.success) {
+            res.categories.forEach(cat => {
+                const catLink = $("<a></a>").addClass("link stretched-link text-dark");
+                catLink.attr("href", "products.html?category_id=" + cat.id);
+                catLink.text(cat.name);
+
+                const catName = $("<p></p>").addClass("p-0 m-0 me-1");
+                catName.append(catLink);
+                
+                const listElement = $("<li></li>").addClass("list-group-item list-group-item-action d-flex flex-row");
+                listElement.append(catName);
+
+                $("div div div ul").append(listElement);
+            });
+        }
+    }
+});
 
 function displayProduct(prod) {
     const card = $("<div></div>").addClass("card");
                 
     const img = $("<img>").addClass("card-img-top img-fluid");
     img.attr("src", "../assets/" + prod.image);
-    img.attr("alt", prod.image);
+    img.attr("alt", prod.image);    
 
     const cardTitle = $("<h2></h2>").addClass("card-title fs-6").text(prod.name);
 
     const cardPrice = $("<p></p>").addClass("card-text m-0").text(prod.price + "€");
 
     const cardLink = $("<a></a>").addClass("card-link stretched-link");
-    cardLink.attr("href", "./product/product.html?id="+prod.id/* +"?category_id="+prod.category_id */);
+    cardLink.attr("href", "./product/product.html?id="+prod.id);
     
     const cardIcons = $("<div><div>").addClass("card-text d-flex");
 
