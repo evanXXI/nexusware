@@ -12,7 +12,7 @@ $.ajax({
                 
                 const card = $("<div></div>").addClass("card text-white m-3");
                 
-                const img = $("<img>").addClass("card-img h-100 w-100 p-4");
+                const img = $("<img>").addClass("card-img h-100 p-4");
                 img.attr("src", "../assets/" + cat.image);
                 img.attr("alt", cat.image);
 
