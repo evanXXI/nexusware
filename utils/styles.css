@@ -4,20 +4,21 @@
 * {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
 }
 
-form .btn,
-form {
+form #searchBtn, form {
     color: #1d1d1d;
 }
-
 
 /** ************************************** **/
 /** ********** NAVBAR AND FOOTER ********* **/
 /** ************************************** **/
-.navbar, ul .dropdown-menu, 
-footer, footer div .row,
-ul .list-group-item {
+.navbar, .navbar ul .dropdown-menu,
+.navbar ul .list-group-item,
+footer ul .dropdown-menu,
+footer ul .list-group-item, 
+footer, footer div .row {
     background-color: #1d1d1d;
 }
 
@@ -35,7 +36,7 @@ li .dropdown-item:hover {
     transition: 0.5s ease;
 }
 
-form .btn {
+form #searchBtn {
     background-color: #8A2BE2;
     border-color: #8A2BE2;
 }
@@ -45,7 +46,7 @@ form .btn {
     border-color: #FF5700;
 }
 
-form .btn:hover,
+form #searchBtn:hover,
 #cartBtnBasic:hover, #cartBtnBurger:hover {
     color: #F7F7F7;
     transition: 0.5s ease;
@@ -68,11 +69,14 @@ form .btn:hover,
 .list-group-item {
     font-size: 0.8em;
 }
+
+
 /** ************************************** **/
 /** *************** TITLES *************** **/
 /** ************************************** **/
 h1, h2, h3, #logo {
     font-family: 'Bebas Neue', sans-serif;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
 }
 
 
@@ -83,7 +87,29 @@ main {
     background-color: white;
 }
 
-.row {
+#homeSection {
+    background-image: url("../assets/wallpapers/4ksetup.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 93vh;
+}
+
+#homeText {
+    color: white;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+}
+
+@media (max-width: 768px) {
+    #homeSection {
+        min-height: 30vh;
+    }
+}
+
+#arrowIcon {
+    color: white;
+}
+
+.box {
     background-color: #F7F7F7;
 }
 
@@ -102,13 +128,56 @@ main {
     }
 }
 
+.card-img-top {
+    object-fit: cover !important;
+    height: 10px;
+}
+
 .card-title  {
     text-decoration: none;
 }
 
+.newBtn, .wireBtn {
+    font-size: 0.6em;
+    background-color: #FFC300;
+}
+
+.categoryBtn {
+    font-size: 0.6em;
+    background-color: #8A2BE2;
+    color: #F7F7F7;
+}
+
+form div textarea {
+    resize: none !important;
+    height: 150px !important;
+}
+
+.select-items, .select-selected {
+    background-color: #8A2BE2 !important;
+}
+
+form div input:focus {
+    outline: none !important;
+}
+
+div button[type=submit], 
+td .btn, 
+div .btn {
+    background-color: #FF5700;
+    color: #F7F7F7;
+}
+
+div button[type=submit]:hover,
+td .btn:hover, 
+div .btn:hover {
+    transition: 0.5s ease;
+    background-color: #0F7FFF;
+    color: #F7F7F7;
+}
 /*
-Principale :    orange vif 		#FF9900 ou #FF5700
-Secondaire:     bleu électrique #00FFFF ou #0F7FFF
+Principale :    orange vif 		#FF5700
+Secondaire:     bleu électrique #0F7FFF
 Accentuation:   violet puissant #8A2BE2
 Accentuation:   jaune vif		#FFC300
 Fond:           gris 			#F7F7F7
