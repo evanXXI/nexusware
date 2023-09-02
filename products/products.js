@@ -77,7 +77,6 @@ $.ajax({
         category_id: category
     },
     success: (res) => {
-        console.log(res);
         if (res.success) {
             res.products.forEach(prod => {
             displayProduct(prod);
