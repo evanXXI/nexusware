@@ -3,23 +3,35 @@ const category = urlParams.get("category_id");
 const byPriceAsc = urlParams.get("byPriceAsc");
 const byPriceDesc = urlParams.get("byPriceDesc");
 const byNewness = urlParams.get("byNewness");
+const wireless = urlParams.get("isWireless");
 
 let displayChoice = "select";
+let sortChoice = "";
+let wireChoice = "";
 
+console.log(category);
 if (category) {
     displayChoice = "selectByCategory";
+    if(category == 1) $("h1").text("Tous les produits - Casques");
+    if(category == 2) $("h1").text("Tous les produits - Souris");
+    if(category == 3) $("h1").text("Tous les produits - Claviers");
 }
 
 if (byPriceAsc) {
-    displayChoice = "selectByPriceAsc";
+    sortChoice = "byPriceAsc";
+    $("h1").text("Liste des produits - Tri par prix croissant");
 }
-
-if (byPriceAsc) {
-    displayChoice = "selectByPriceAsc";
+if (byPriceDesc) {
+    sortChoice = "byPriceDesc";
+    $("h1").text("Liste des produits - Tri par prix décroissant");
 }
-
 if (byNewness) {
-    displayChoice = "selectByNewness";
+    sortChoice = "byNewness";
+    $("h1").text("Liste des produits - Tri par nouveauté");
+}
+if (wireless) {
+    wireChoice = "isWireless";
+    $("h1").text("Liste des produits - Sans-fil");
 }
 
 $.ajax({
@@ -49,12 +61,12 @@ $.ajax({
 });
 
 function displayProduct(prod) {
-    const card = $("<div></div>").addClass("card");
+    const card = $("<div></div>").addClass("card h-100");
                 
     const img = $("<img>").addClass("card-img-top img-fluid");
     img.attr("src", "../assets/" + prod.image);
     img.attr("alt", prod.image);    
-
+    
     const cardTitle = $("<h2></h2>").addClass("card-title fs-6").text(prod.name);
 
     const cardPrice = $("<p></p>").addClass("card-text m-0").text(prod.price + "€");
@@ -81,7 +93,7 @@ function displayProduct(prod) {
     if (addingDate > oneWeekAgo) {
         cardIcons.append(newBtn);
     }
-
+    
     const cardBody = $("<div></div>").addClass("card-body");
 
     cardBody.append(cardTitle, cardPrice, cardLink, cardIcons);
@@ -99,9 +111,12 @@ $.ajax({
     dataType: "json",
     data: {
         choice: displayChoice,
-        category_id: category
+        category_id: category,
+        sort: sortChoice,
+        wire: wireChoice
     },
     success: (res) => {
+
         if (res.success) {
             res.products.forEach(prod => {
             displayProduct(prod);

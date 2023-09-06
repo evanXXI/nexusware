@@ -86,29 +86,24 @@
   <main>
     <div class="container-xxl pt-5 pb-5">
       <div class="row rounded-3 m-1 box">
-        <h1 class="fs-3 pt-2">Liste des produits</h1>
+        <h1 class="fs-3 pt-2">Liste des produits - Tous les produits</h1>
         <div class="col-12 col-md-3">
           <ul class="list-group">
-            <li class="list-group-item list-group-item-action d-flex flex-row">
+            <li class="list-group-item list-group-item-action d-flex flex-row" id="everyProductList">
               <p class="p-0 m-0 me-1"><a class="link stretched-link text-dark" href="products.html">Afficher tous les produits</a></p>
             </li>
-            <!-- <li class="list-group-item list-group-item-action d-flex flex-row">
-              <p class="p-0 m-0 me-1">Trier par :</p>
-              <select class="custom-select" id="sort">
-                <option selected>Choisir...</option>
-                <option value="byNewness">Nouveauté</option>
-                <option value="byPriceAsc">Prix croissant</option>
-                <option value="byPriceDesc">Prix décroissant</option>
-              </select>
+            <li class="list-group-item list-group-item-action d-flex flex-row" id="wirelessList">
+              <p class="p-0 m-0 me-1"><a class="link stretched-link text-dark" href="?isWireless=true">Afficher les produits sans fil</a></p>
             </li>
-            <li class="list-group-item list-group-item-action d-flex flex-row">
-              <p class="p-0 m-0 me-1">Filtrer par :</p>
-              <select class="custom-select" id="filter">
-                <option selected>Choisir...</option>
-                <option value="Filaire">Filaire</option>
-                <option value="Sans-fil">Sans-fil <a href=""></a></option>
-              </select>
-            </li> -->
+            <li class="list-group-item list-group-item-action d-flex flex-row" id="priceAscList">
+              <p class="p-0 m-0 me-1"><a class="link stretched-link text-dark" href="?byPriceAsc=true">Trier par prix croissant</a></p>
+            </li>
+            <li class="list-group-item list-group-item-action d-flex flex-row" id="priceDescList">
+              <p class="p-0 m-0 me-1"><a class="link stretched-link text-dark" href="?byPriceDesc=true">Trier par prix décroissant</a></p>
+            </li>
+            <li class="list-group-item list-group-item-action d-flex flex-row" id="newnessList">
+              <p class="p-0 m-0 me-1"><a class="link stretched-link text-dark" href="?byNewness=true">Trier par nouveauté</a></p>
+            </li>
           </ul>
         </div>
 

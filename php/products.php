@@ -11,12 +11,30 @@ else $method = $_GET;
 
 switch ($method["choice"]) {
     case "select":
-        $req = $db->query("SELECT p.id, p.name, p.price, p.description, p.wireless, p.image, p.adding_date, c.name AS category_name FROM products p INNER JOIN categories c ON p.category_id = c.id");
+        $sort = "";
+        $wireless = "";
+        
+        if (isset($method["wire"]) && !empty(trim($method["wire"])) && $method["wire"] == "isWireless") $wireless = "WHERE wireless = 1";
+
+        if (isset($method["sort"]) && !empty(trim($method["sort"]))) {
+            if ($method["sort"] == "byPriceAsc") {
+                $sort = "ORDER BY price ASC";
+            } else if ($method["sort"] == "byPriceDesc") {
+                $sort = "ORDER BY price DESC";
+            } else if ($method["sort"] == "byNewness") {
+                $sort = "ORDER BY adding_date DESC";
+            }
+        }
+
+        $sortTest = $method["sort"];
+        $wireTest = $method["wire"];
+        
+        $req = $db->query("SELECT p.id, p.name, p.price, p.description, p.wireless, p.image, p.adding_date, c.name AS category_name FROM products p INNER JOIN categories c ON p.category_id = c.id $wireless $sort");
 
         if ($req) $products = $req->fetchAll(PDO::FETCH_ASSOC);
         else $products = [];
 
-        echo json_encode(["success" => true, "products" => $products]);
+        echo json_encode(["success" => true, "products" => $products, "Req" => $req, "sortTest" => $sortTest, "wireTest" => $wireTest]);
         break;
     
     case "selectByCategory":
@@ -25,7 +43,25 @@ switch ($method["choice"]) {
             die;
         }
 
-        $req = $db->prepare("SELECT p.id, p.name, p.price, p.wireless, p.image, p.adding_date, c.name AS category_name FROM products p INNER JOIN categories c ON p.category_id = c.id WHERE p.category_id = ?");
+        $sort = "";
+        $wireless = "";
+        
+        if (isset($method["wire"]) && !empty(trim($method["wire"])) && $method["wire"] == "isWireless") $wireless = "AND WHERE p.wireless = 1";
+
+        if (isset($method["sort"]) && !empty(trim($method["sort"]))) {
+            if ($method["sort"] == "byPriceAsc") {
+                $sort = "ORDER BY price ASC";
+            } else if ($method["sort"] == "byPriceDesc") {
+                $sort = "ORDER BY price DESC";
+            } else if ($method["sort"] == "byNewness") {
+                $sort = "ORDER BY adding_date DESC";
+            }
+        }
+
+        $sortTest = $method["sort"];
+        $wireTest = $method["wire"];
+
+        $req = $db->prepare("SELECT p.id, p.name, p.price, p.wireless, p.image, p.adding_date, c.name AS category_name FROM products p INNER JOIN categories c ON p.category_id = c.id WHERE p.category_id = ? $wireless $sort");
 
         $req->execute([$method["category_id"]]);
 
@@ -33,28 +69,6 @@ switch ($method["choice"]) {
         else $products =[];
 
         echo json_encode(["success" => true, "products" => $products]);
-        break;
-    
-    case "selectByPriceAsc":
-        $req = $db->query("SELECT name, price, wireless, image, category_id FROM products ORDER BY price ASC");
-
-        if ($req) $products = $req->fetchAll(PDO::FETCH_ASSOC);
-        else $products = [];
-
-        echo json_encode(["success" => true, "products" => $products]);
-        break;
-    
-    case "selectByPriceDesc":
-        $req = $db->query("SELECT name, price, wireless, image, category_id FROM products ORDER BY price DESC");
-
-        if ($req) $products = $req->fetchAll(PDO::FETCH_ASSOC);
-        else $products = [];
-
-        echo json_encode(["success" => true, "products" => $products]);
-        break;
-
-    case "selectByNewness":
-        $req = $db->query("SELECT name, price, wireless, image, category_id FROM products ORDER BY adding_date DESC");
         break;
 
     case "select_id":
@@ -71,8 +85,6 @@ switch ($method["choice"]) {
 
         echo json_encode(["success" => true, "product" => $product]);
         break;
-
-    case "isWireless":
 
     default:
         echo json_encode(["success" => false, "error" => "Ce choix est inexistant"]);
