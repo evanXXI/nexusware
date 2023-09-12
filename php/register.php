@@ -2,6 +2,9 @@
 //? Intégration du contenu de mon fichier de connexion à la BDD dans le fichier actuel
 require_once("./utils/db-connect.php");
 
+//? Intégration du contenu de mon fichier d'envoi de mails
+require_once("./mailer.php");
+
 //? Si la méthode de requète est différente de POST, on envoie une réponse de non-succès et un message d'erreur 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     echo json_encode(["success" => false, "error" => "Mauvaise méthode de requète des valeurs de champs"]);
@@ -10,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 }
 
 //? Je crée un tableau dans lequel je vais stocker mes paramètres, qui sont ici les valeurs des champs à récupérer en entrée de l'utilisateur. Cela me permet de modifier facilement les champs en cas de changements futurs en BDD.
-$parameters = ["firstname", "lastname", "birthdate", "street_number", "street_name", "zip_code", "country", "email", "pwd"];
+$parameters = ["firstname", "lastname", "birthdate", "street_number", "street_bis", "street_name", "zip_code", "country", "email", "pwd"];
 
 //? Je parcoure le tableau contenant mes paramètres
 foreach ($parameters as $parameter) {
@@ -54,4 +57,6 @@ $req->bindValue(":pwd", $hash);
 $req->execute();
 
 echo json_encode(["success" => true]);
+
+mailer($_POST["email"], "Bienvenue {$_POST["firstname"]}", "Bonjour {$_POST["firstname"]},\n\nToute l'équipe de NexusWare est ravie de vous accueillir sur notre plateforme de vente de hardware en ligne.\n\nNous mettons tout en oeuvre pour la satisfaction du client. Pour toute question ou réclammation en tout genre, vous pouvez nous contacter directement via les rubriques Contact et Messagerie, directement sur notre site internet, ou via l'adresse mail qui suit :\nevan.rekaty-cisse@imie-paris.fr\n\nNous vous souhaitons le meilleur.\n\nBien cordialement,\nNexusWare");
 ?>
