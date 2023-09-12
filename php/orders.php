@@ -14,10 +14,39 @@ else $method = $_GET;
 
 switch ($method["choice"]) {
     case "select":
-        $req = $db->query("");
+        if (!isset($method["user_id"]) && empty(trim($method["user_id"]))) {
+            echo json_encode(["success" => false, "error" => "L'identifiant de l'utilisateur est manquant ou vide"]);
+            die;
+        }
+
+        $req = $db->prepare("SELECT o.*, CONCAT(u.street_number, u.street_bis, ' ', u.street_name, ' ', u.zip_code, ', ', u.country) AS user_address FROM orders o INNER JOIN users u ON o.user_id = u.id WHERE user_id = ? AND order_status != 'Commande annulée'");
+        $req->execute([$method["user_id"]]);
+
+        if ($req) $myOrders = $req->fetchAll(PDO::FETCH_ASSOC);
+        else $myOrders = [];
+        
+        echo json_encode(["success" => true, "myOrders" => $myOrders]);
         break;
 
-    case "select_id":
+    case "cancel":
+        //? Si ma méthode de requète n'est pas "POST", alors j'affiche un message d'erreur
+        if ($_SERVER["REQUEST_METHOD"] != "POST") {
+            echo json_encode(["success" => false, "error" => "Mauvaise méthode"]);
+            die; //! J'arrête l'exécution
+        }
+
+        if (!isset($method["order_id"]) || empty(trim($method["order_id"]))) {
+            echo json_encode(["success" => false, "error" => "La commande n'existe pas"]);
+            die; //! J'arrête l'exécution
+        }
+        
+        $req = $db->prepare("UPDATE orders SET order_status = 'Commande annulée' WHERE order_id = ?");
+        $req->execute([$method["order_id"]]);
+
+        if ($req) $order = $req->fetch(PDO::FETCH_ASSOC);
+        else $order = '';
+        
+        echo json_encode(["success" => true, "order" => $order]);
         break;
 
     case "insert":
@@ -39,7 +68,7 @@ switch ($method["choice"]) {
 
         $req = $db->prepare("INSERT INTO orders(order_status, user_id) VALUES(:order_status, :user_id)");
 
-        $req->bindValue(":order_status", $method["order_status"]);
+        $req->bindValue(":order_status", "Commande en cours de préparation");
         $req->bindValue(":user_id", $method["user_id"]);
 
         $req->execute();
@@ -72,8 +101,5 @@ switch ($method["choice"]) {
 
         if ($req->rowCount()) echo json_encode(["success" => true, "order_id" => $order_id]);
         else json_encode(["success" => false, "error" => "Erreur lors de l'insertion"]);
-        break;
-
-    case "delete":
         break;
 }
