@@ -16,7 +16,7 @@ switch ($method["choice"]) {
             die;
         }
 
-        $req = $db->prepare("SELECT firstname, lastname, birthdate, street_number, street_bis, street_name, zip_code, country, email, pwd FROM users WHERE id = ?");
+        $req = $db->prepare("SELECT firstname, lastname, birthdate, street_number, street_bis, street_name, zip_code, country, email FROM users WHERE id = ?");
         $req->execute([$method["id"]]);
 
         if($req) $user = $req->fetch(PDO::FETCH_ASSOC);
@@ -32,7 +32,14 @@ switch ($method["choice"]) {
             die;
         }
 
-        $parameters = ["id", "firstname", "lastname", "birthdate", "street_number", "street_bis", "street_name", "zip_code", "country", "email"];
+        $regex = "/^[a-zA-Z0-9-+._]+@[a-zA-Z0-9-]{2,}\.[a-zA-Z]{2,}$/";
+        
+        if (!preg_match($regex, $method["email"])) {
+            echo json_encode(["success" => false, "error" => "L'email n'est pas au bon format"]);
+            die;
+        }
+
+        $parameters = ["id", "firstname", "lastname", "birthdate", "street_number", "street_name", "zip_code", "country", "email"];
         
         foreach ($parameters as $parameter) {
             if (!isset($method[$parameter]) || empty(trim($method[$parameter]))) {
