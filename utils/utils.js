@@ -4,7 +4,7 @@ let user = JSON.parse(localStorage.getItem("user"));
 
 //* Affichage du footer dans chaque page
 $(() => {
-    $("footer").load("/nexusWareProject/nexusware/utils/footer.html");
+    $("footer").load("/nexusware/utils/footer.html");
 });
 
 

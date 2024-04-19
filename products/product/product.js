@@ -2,7 +2,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get("id");
 
 $.ajax({
-    url: "/nexusWareProject/nexusware/php/products.php",
+    url: "/nexusware/php/products.php",
     type: "GET",
     dataType: "json",
     data: {
@@ -13,7 +13,7 @@ $.ajax({
         if (res.success) {
             res.product.forEach(prod => {
                 const img = $("<img>").addClass("img-fluid");
-                img.attr("src", "/nexusWareProject/nexusware/assets/"+prod.image);
+                img.attr("src", "/nexusware/assets/"+prod.image);
                 img.attr("alt", prod.image);
                 $("#imgCtn").append(img);
 

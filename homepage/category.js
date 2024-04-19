@@ -19,7 +19,7 @@ $.ajax({
                 const cardTitle = $("<h2></h2>").addClass("card-title fs-6 w-100").text(cat.name);
 
                 const cardLink = $("<a></a>").addClass("card-link stretched-link");
-                cardLink.attr("href", "/nexusWareProject/nexusware/products/products.html?category_id=" + cat.id);
+                cardLink.attr("href", "/nexusware/products/products.html?category_id=" + cat.id);
                 const cardOverlay = $("<div></div>").addClass("card-img-overlay");
                 
                 cardOverlay.append(cardTitle);
